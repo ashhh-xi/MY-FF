@@ -199,4 +199,45 @@ router.get("/google-auth", async (req, res) => {
   }
 });
 
+// Get user profile details
+router.get("/profile", async (req, res) => {
+  try {
+    // Assuming the user is authenticated and their email is passed in the query
+    const { email } = req.query;
+
+    if (!email) {
+      return res.status(400).json({
+        success: false,
+        message: "Email is required to fetch profile details",
+      });
+    }
+
+    const { rows } = await client.query(
+      `SELECT userName, email, role FROM users WHERE email = $1`,
+      [email]
+    );
+
+    if (rows.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    const user = rows[0];
+
+    res.status(200).json({
+      success: true,
+      user,
+    });
+  } catch (error) {
+    console.error("Error fetching user profile:", error.message);
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+});
+
+
 module.exports = { userRouter: router };

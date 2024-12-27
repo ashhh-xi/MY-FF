@@ -15,7 +15,7 @@ import Image from "next/image";
 import Connectbtn from "@/components/manual-ui/connect/Connectbtn";
 import { useRecoilValue } from "recoil";
 import { balanceAtom } from "@/recoil/atoms/userAtoms";
-
+import Crowdfundingpage from "./Crowdfundingpage";
 
 export default function DashboardLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -141,6 +141,10 @@ export default function DashboardLayout() {
             <Route
               path="/Analytics"
               element={<Analytics isDarkMode={isDarkMode} />}
+            />
+            <Route
+              path="/Crowdfundingpage"
+              element={<Crowdfundingpage isDarkMode={isDarkMode} />}
             />
             <Route
               path="/Community"
