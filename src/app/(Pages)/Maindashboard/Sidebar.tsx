@@ -55,6 +55,11 @@ export default function Sidebar({
       path: "/analytics",
     },
     {
+      icon: <BarChart2 className="w-5 h-5" />,
+      label: "Crowdfunding",
+      path: "/Crowdfundingpage",
+    },
+    {
       icon: <Users className="w-5 h-5" />,
       label: "Community",
       path: "/community",
