@@ -13,7 +13,7 @@ const signupSchema = z.object({
   userName: z.string().min(3).max(10).trim(),
   email: z.string().email(),
   password: z.string().min(6).max(20).trim(),
-  role: z.enum(["Catcher", "Bearer"]), // Validate role as either 'Catcher' or 'Bearer'
+  role: z.enum(["Donor", "Receiver", "Logistics"]), // Validate role as either 'Catcher' or 'Bearer'
 });
 
 // Signup route
