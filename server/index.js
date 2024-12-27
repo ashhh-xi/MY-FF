@@ -7,6 +7,7 @@ const { dbConnection } = require('./database/database');
 const { userRouter } = require('./routes/user');
 const { otpRouter } = require('./routes/otp');
 const { marketPlaceRouter } = require('./routes/marketplace');
+const { formsRouter } = require('./routes/forms');
 
 // Load environment variables
 dotenv.config();
@@ -25,6 +26,7 @@ app.use(express.json());
 app.use('/api/v1/user', userRouter);
 app.use('/api/v1/otp', otpRouter);
 app.use('/api/v1/mp', marketPlaceRouter);
+app.use('/api/v1/forms', formsRouter);
 
 // Global error handling middleware
 app.use((err, req, res, next) => {
