@@ -16,6 +16,7 @@ import Connectbtn from "@/components/manual-ui/connect/Connectbtn";
 import { useRecoilValue } from "recoil";
 import { balanceAtom } from "@/recoil/atoms/userAtoms";
 import Crowdfundingpage from "./Crowdfundingpage";
+import Marketplace from "./marketplace/page";
 
 export default function DashboardLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -142,10 +143,7 @@ export default function DashboardLayout() {
               path="/Analytics"
               element={<Analytics isDarkMode={isDarkMode} />}
             />
-            <Route
-              path="/Crowdfundingpage"
-              element={<Crowdfundingpage isDarkMode={isDarkMode} />}
-            />
+            <Route path="/Crowdfundingpage" element={<Crowdfundingpage />} />
             <Route
               path="/Community"
               element={<Community isDarkMode={isDarkMode} />}
@@ -155,6 +153,7 @@ export default function DashboardLayout() {
               element={<History isDarkMode={isDarkMode} />}
             />
             <Route path="/Inventory" element={<Inventory />} />
+            <Route path="/marketplace/page" element={<Marketplace />} />
           </Routes>
         </main>
       </div>

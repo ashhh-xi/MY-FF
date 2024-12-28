@@ -55,14 +55,19 @@ export default function Sidebar({
       path: "/analytics",
     },
     {
+      icon: <Users className="w-5 h-5" />,
+      label: "Community",
+      path: "/community",
+    },
+    {
       icon: <BarChart2 className="w-5 h-5" />,
       label: "Crowdfunding",
       path: "/Crowdfundingpage",
     },
     {
-      icon: <Users className="w-5 h-5" />,
-      label: "Community",
-      path: "/community",
+      icon: <BarChart2 className="w-5 h-5" />,
+      label: "Marketplace",
+      path: "/marketplace/page",
     },
     {
       icon: <FileUp className="w-5 h-5" />,

@@ -40,6 +40,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/toaster";
 
 import { RecoilRoot } from "recoil";
 import { Nav } from "react-day-picker";
@@ -61,7 +62,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <RecoilRoot>
-          {children}
+          {children} <Toaster />
         </RecoilRoot>
       </body>
     </html>
