@@ -9,7 +9,9 @@ import {
   Users,
   Clock,
   Settings,
+  Bot,
   LogOut,
+  ShoppingCart,
   FileUp,
 } from "lucide-react";
 import Link from "next/link";
@@ -65,7 +67,7 @@ export default function Sidebar({
       path: "/Crowdfundingpage",
     },
     {
-      icon: <BarChart2 className="w-5 h-5" />,
+      icon: <ShoppingCart className="w-5 h-5" />,
       label: "Marketplace",
       path: "/marketplace/page",
     },
@@ -136,6 +138,16 @@ export default function Sidebar({
       </nav>
 
       <div className="p-4 border-t border-gray-800">
+<Link href="/Chatbot">
+        <button className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-800/50 transition-colors text-gray-400 hover:text-white group">
+          <div className="relative">
+            <Bot className="w-5 h-5" />
+            <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-20 rounded-full blur-sm transition-opacity" />
+          </div>
+          <span className={`${!isOpen && "hidden"} text-sm`}>Annapoorna</span>
+        </button>
+
+</Link>
         <button className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-800/50 transition-colors text-gray-400 hover:text-white group">
           <div className="relative">
             <Settings className="w-5 h-5" />
