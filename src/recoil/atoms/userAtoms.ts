@@ -7,6 +7,7 @@ export const walletAddressState = atom<string>({
 });
 
 // Balance state
+// Balance state
 export const balanceAtom = atom<number | null>({
   key: "balance",
   default: 1000,

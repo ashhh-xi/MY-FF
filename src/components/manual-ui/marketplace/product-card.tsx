@@ -58,13 +58,20 @@ export function ProductCard({ product }: ProductCardProps) {
           </div>
         </div>
       </CardContent>
-      <CardFooter className="p-4 pt-0">
+      <CardFooter className="p-4 pt-0 flex flex-col gap-2">
         <Button
           className="w-full gap-2 bg-primary hover:bg-primary/90 text-black font-semibold"
           disabled={product.stock_quantity === 0}
         >
           <ShoppingCart className="h-4 w-4" />
           {product.stock_quantity === 0 ? "Out of Stock" : "Add to Cart"}
+        </Button>
+        <Button
+          className="w-full gap-2 bg-primary hover:bg-primary/90 text-black font-semibold"
+          disabled={product.stock_quantity === 0}
+        >
+          <ShoppingCart className="h-4 w-4" />
+          {product.stock_quantity === 0 ? "Out of Stock" : "Buy Now"}
         </Button>
       </CardFooter>
     </Card>

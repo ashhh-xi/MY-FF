@@ -2,6 +2,7 @@
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
+    "typeRoots": ["./node_modules/@types", "./src/global.d.ts"],
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
