@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/manual-ui/forms/map-section.jsx", "src/components/ui/form.tsx", "next.config.mjs"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/manual-ui/forms/map-section.jsx", "src/components/ui/form.tsx", "next.config.mjs", "src/recoil/atoms/userAtoms.ts"],
   "exclude": ["node_modules"]
 }

@@ -12,19 +12,26 @@ import Analytics from "./Analytics";
 import Community from "./Community";
 import History from "./History";
 import Image from "next/image";
-import Connectbtn from "@/components/manual-ui/connect/Connectbtn";
+import Connectbtn from "../../../components/manual-ui/connect/Connectbtn"; // Ensure correct case for component names
 import { useRecoilValue } from "recoil";
-import { balanceAtom } from "@/recoil/atoms/userAtoms";
+import {
+  walletAddressState,
+} from "@/recoil/atoms/userAtoms"; // Correct atom imports
 import Crowdfundingpage from "./Crowdfundingpage";
+import { fetchBalanceSelector } from "@/blockchain/bal";
 
 export default function DashboardLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const balance = useRecoilValue(balanceAtom); // Getting balance from Recoil atom
 
+  // Recoil: Fetch wallet address and balance
+  const walletAddress = useRecoilValue(walletAddressState);
+  const balance = useRecoilValue(fetchBalanceSelector);
+
+  // Function to toggle dark mode
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle("dark");
+    setIsDarkMode((prevMode) => !prevMode);
+    document.documentElement.classList.toggle("dark", !isDarkMode);
   };
 
   return (
@@ -33,6 +40,7 @@ export default function DashboardLayout() {
         isDarkMode ? "dark bg-dark-darker" : "bg-gray-50"
       }`}
     >
+      {/* Sidebar Component */}
       <Sidebar
         isOpen={isSidebarOpen}
         setIsOpen={setIsSidebarOpen}
@@ -40,6 +48,7 @@ export default function DashboardLayout() {
       />
 
       <div className="flex-1 overflow-auto">
+        {/* Navigation Bar */}
         <nav
           className={`${
             isDarkMode
@@ -48,6 +57,7 @@ export default function DashboardLayout() {
           } border-b sticky top-0 z-10`}
         >
           <div className="px-4 h-16 flex items-center justify-between">
+            {/* Sidebar Toggle Button */}
             <button
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
               className={`p-2 rounded-lg ${
@@ -62,21 +72,17 @@ export default function DashboardLayout() {
             </button>
 
             <div className="flex items-center gap-6">
-              {/* FeedCoin Balance */}
+              {/* FeedCoin Balance and Connect Button */}
               <div className="flex items-center gap-2">
                 <Image
                   src="/coin.png"
-                  className="radius-10 inline"
                   alt="FeedCoin"
                   width={50}
-                  height={50}
+                  height={10}
+                  className="rounded-full"
                 />
-                <p>{balance !== null ? `${balance} FDC` : "Loading..."}</p>{" "}
-                {/* Display balance */}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 font-semibold">
-                  {/* Dynamically show the balance */}
-                  <Connectbtn />
-                </span>
+                <p>{balance !== null ? `${100000} FDC` : "Loading..."}</p>
+                <Connectbtn />
               </div>
 
               {/* Notifications */}
@@ -92,7 +98,7 @@ export default function DashboardLayout() {
                 />
               </button>
 
-              {/* Theme Toggle */}
+              {/* Theme Toggle Button */}
               <button
                 onClick={toggleTheme}
                 className={`p-2 rounded-lg ${
@@ -106,7 +112,7 @@ export default function DashboardLayout() {
                 )}
               </button>
 
-              {/* Profile */}
+              {/* User Profile Button */}
               <button className="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-800/50">
                 <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 flex items-center justify-center">
                   <User className="w-5 h-5 text-white" />
@@ -116,6 +122,7 @@ export default function DashboardLayout() {
           </div>
         </nav>
 
+        {/* Main Content */}
         <main className="p-6">
           <Routes>
             <Route
@@ -142,10 +149,7 @@ export default function DashboardLayout() {
               path="/Analytics"
               element={<Analytics isDarkMode={isDarkMode} />}
             />
-            <Route
-              path="/Crowdfundingpage"
-              element={<Crowdfundingpage isDarkMode={isDarkMode} />}
-            />
+            <Route path="/Crowdfundingpage" element={<Crowdfundingpage />} />
             <Route
               path="/Community"
               element={<Community isDarkMode={isDarkMode} />}
