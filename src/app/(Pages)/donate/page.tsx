@@ -98,7 +98,7 @@ export default function DonationForm() {
           </div>
         </div>
 
-        <Card style={{ backgroundColor: "black", color: "white",}}>
+        <Card style={{ backgroundColor: "black", color: "white" }}>
           <CardHeader>
             <CardTitle>Donation Details</CardTitle>
             <CardDescription>
@@ -177,7 +177,7 @@ export default function DonationForm() {
                         <FormItem>
                           <FormLabel>Pickup Location</FormLabel>
                           {/* <FormControl>
-                            <Textarea 
+                            <Textarea
                               placeholder="Enter detailed address for food pickup"
                               className="resize-none text-black"
                               {...field}
@@ -188,7 +188,7 @@ export default function DonationForm() {
                       )}
                     />
 
-                    <MapSection  />
+                    <MapSection />
                   </DonationFormSection>
 
                   <DonationFormSection title="Food Details">
@@ -290,7 +290,6 @@ export default function DonationForm() {
                             <PopoverTrigger asChild>
                               <FormControl>
                                 <Button
-                                  
                                   className={cn(
                                     "w-full pl-3 text-left font-normal border-2 border-transparent transition-all",
                                     "bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 background-animate",
@@ -305,7 +304,7 @@ export default function DonationForm() {
                                       <span>Pick expiry date</span>
                                     )}
                                     <CalendarIcon
-                                      className="ml-auto 
+                                      className="ml-auto
                                     h-4 w-4 opacity-0
                                     absolute   "
                                     />
@@ -359,7 +358,7 @@ export default function DonationForm() {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Upload Images</FormLabel>
-                          <FormControl >
+                          <FormControl>
                             <ImageUpload
                               onChange={(files) => field.onChange(files)}
                             />
@@ -372,7 +371,11 @@ export default function DonationForm() {
                 </div>
 
                 <div className="flex justify-end pt-6">
-                  <Button type="submit" size="lg" className="w-full bg-white text-black sm:w-auto">
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full bg-white text-black sm:w-auto"
+                  >
                     Post Donation
                   </Button>
                 </div>
@@ -381,7 +384,7 @@ export default function DonationForm() {
           </CardContent>
         </Card>
       </div>
-      <DonationPage/>
+      <DonationPage />
     </div>
   );
 }
