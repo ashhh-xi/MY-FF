@@ -14,9 +14,7 @@ import History from "./History";
 import Image from "next/image";
 import Connectbtn from "../../../components/manual-ui/connect/Connectbtn"; // Ensure correct case for component names
 import { useRecoilValue } from "recoil";
-import {
-  walletAddressState,
-} from "@/recoil/atoms/userAtoms"; // Correct atom imports
+import { walletAddressState } from "@/recoil/atoms/userAtoms"; // Correct atom imports
 import Crowdfundingpage from "./Crowdfundingpage";
 import { fetchBalanceSelector } from "@/blockchain/bal";
 
@@ -81,7 +79,7 @@ export default function DashboardLayout() {
                   height={10}
                   className="rounded-full"
                 />
-                <p>{balance !== null ? `${100000} FDC` : "Loading..."}</p>
+                <p>{balance !== null ? `${balance} FDC` : "Loading..."}</p>
                 <Connectbtn />
               </div>
 

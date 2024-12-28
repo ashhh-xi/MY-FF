@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -273,7 +273,9 @@ export default function VolunteerForm() {
                       name="emergencyNumber"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-white">Emergency Contact Number</FormLabel>
+                          <FormLabel className="text-white">
+                            Emergency Contact Number
+                          </FormLabel>
                           <FormControl>
                             <Input
                               className="bg-black border-none"
@@ -291,7 +293,9 @@ export default function VolunteerForm() {
                       name="languages"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-white">Languages Spoken</FormLabel>
+                          <FormLabel className="text-white">
+                            Languages Spoken
+                          </FormLabel>
                           <FormControl>
                             <Input
                               className="bg-black border-none"
@@ -311,7 +315,7 @@ export default function VolunteerForm() {
                       Volunteer Preferences
                     </h2>
 
-                    <FormField 
+                    <FormField
                       control={form.control}
                       name="availability"
                       render={() => (
@@ -330,7 +334,8 @@ export default function VolunteerForm() {
                                       className="flex flex-row items-start space-x-3 space-y-0"
                                     >
                                       <FormControl>
-                                        <Checkbox className="bg-white"
+                                        <Checkbox
+                                          className="bg-white"
                                           checked={field.value?.includes(
                                             option.id
                                           )}
@@ -368,7 +373,9 @@ export default function VolunteerForm() {
                       name="activities"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-white">Preferred Activities</FormLabel>
+                          <FormLabel className="text-white">
+                            Preferred Activities
+                          </FormLabel>
                           <FormControl>
                             <Select
                               onValueChange={(value) =>
@@ -401,7 +408,9 @@ export default function VolunteerForm() {
                       name="skills"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-white">Skills & Experience</FormLabel>
+                          <FormLabel className="text-white">
+                            Skills & Experience
+                          </FormLabel>
                           <FormControl>
                             <Textarea
                               placeholder="Tell us about your relevant skills and experience"
@@ -419,7 +428,9 @@ export default function VolunteerForm() {
                       name="motivation"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel  className="text-white">Why Do You Want to Volunteer?</FormLabel>
+                          <FormLabel className="text-white">
+                            Why Do You Want to Volunteer?
+                          </FormLabel>
                           <FormControl>
                             <Textarea
                               placeholder="Share your motivation for volunteering"
@@ -437,7 +448,9 @@ export default function VolunteerForm() {
                       name="profilePhoto"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-white">Profile Photo</FormLabel>
+                          <FormLabel className="text-white">
+                            Profile Photo
+                          </FormLabel>
                           <FormControl>
                             <ImageUpload
                               onChange={(files) => field.onChange(files)}
@@ -454,7 +467,8 @@ export default function VolunteerForm() {
                       render={({ field }) => (
                         <FormItem className="flex flex-row items-start space-x-3 space-y-0">
                           <FormControl>
-                            <Checkbox className="bg-white"
+                            <Checkbox
+                              className="bg-white"
                               checked={field.value}
                               onCheckedChange={field.onChange}
                             />
@@ -477,13 +491,15 @@ export default function VolunteerForm() {
                 </div>
 
                 <div className="flex justify-end pt-6">
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="w-full md:w-auto bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 hover:from-pink-600 hover:via-purple-600 hover:to-indigo-600 transition-all duration-300 bg-gradient-to-r from-green-100 via-lime-400 to-lime-300"
-                  >
-                    Submit Application
-                  </Button>
+                  <Link href="/volunteer">
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="w-full md:w-auto bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 hover:from-pink-600 hover:via-purple-600 hover:to-indigo-600 transition-all duration-300 bg-gradient-to-r from-green-100 via-lime-400 to-lime-300"
+                    >
+                      Submit Application
+                    </Button>
+                  </Link>
                 </div>
               </form>
             </Form>

@@ -667,57 +667,33 @@ const simplifiedABI = [
 	}
 ];
 // Selector to fetch user balance
-export const fetchBalanceSelector = selector<number>({
-  key: "fetchBalanceSelector",
+export const fetchBalanceSelector = selector({
+  key: 'fetchBalanceSelector',
   get: async ({ get }) => {
-    const walletAddress = get(walletAddressState);
-
-    if (!walletAddress) {
-      console.error("No wallet address found");
-      return 0;
-    }
-
-    if (typeof window.ethereum === "undefined") {
-      console.error("Ethereum provider (MetaMask) not found");
-      return 0;
+    const walletAddress = get(walletAddressState); // Assuming walletAddressState is already defined
+    if (!ethers.utils.isAddress(walletAddress)) {
+      console.error("Invalid wallet address.");
+      return '0';
     }
 
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
+    const contractAddress = "0xa81F35187C9DfaEBfc8ae8b9f7c45Acf3Bb8E2fa"; // Replace with your contract address
+    const abi = ["function balanceOf(address) view returns (uint256)"];
+    const contract = new ethers.Contract(contractAddress, simplifiedABI, provider);
 
     try {
-      // Request accounts to connect
-      await provider.send("eth_requestAccounts", []);
-
-      const contractAddress = "0xa81F35187C9DfaEBfc8ae8b9f7c45Acf3Bb8E2fa"; // Replace with your contract address
-      const contract = new ethers.Contract(contractAddress, simplifiedABI, signer);
-
-      console.log("Fetching balance for address:", walletAddress);
-
-      // Fetch the raw balance in Wei
-      const balanceWei = await contract.balanceOf(walletAddress);
-      console.log("Raw balance (Wei):", balanceWei.toString());
-
-      // Fetch the token decimals
-      const decimals = await contract.decimals();
-      console.log("Decimals:", decimals);
-
-      // Convert balance to human-readable format
-      const balanceInToken = ethers.utils.formatUnits(balanceWei, decimals);
-      console.log("Converted balance:", balanceInToken);
-
-      return parseFloat(balanceInToken);
-    } catch (error: any) {
-      if (error.code === "CALL_EXCEPTION") {
-        console.error("CALL_EXCEPTION: The contract call failed.");
-        console.error("Error details:", error);
-      } else if (error.code === "USER_REJECTED_REQUEST") {
-        console.error("User rejected the request.");
-      } else {
-        console.error("Error fetching balance:", error);
+      const network = await provider.getNetwork();
+      const expectedChainId = 11155111; // Sepolia test network chain ID
+      if (network.chainId !== expectedChainId) {
+        throw new Error(`Connected to the wrong network: ${network.name}. Please switch to Sepolia.`);
       }
 
-      return 0;
+      const balance = await contract.balanceOf(walletAddress, { gasLimit: 100000 });
+      return ethers.utils.formatUnits(balance, 18); // Assuming 18 decimals
+    } catch (error) {
+      console.error("Error fetching balance:", error);
+      return '0'; // Return a default balance on error
     }
   },
 });
+

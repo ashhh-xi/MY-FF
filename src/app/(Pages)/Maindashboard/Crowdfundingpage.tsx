@@ -63,7 +63,7 @@ export default function CrowdfundingPage() {
           </section>
         </div>
 
-        <Footer />
+        {/* <Footer /> */}
       </div>
 
       <RequestDonationModal
