@@ -2,7 +2,8 @@
 
 import { ProductCard } from "./product-card";
 import { ProductSkeleton } from "./product-skeleton";
-import { MarketplaceItem } from "@/types/marketplace";
+// import { MarketplaceItem } from "@/types/marketplace";
+import { MarketplaceItem } from "../../../../types/marketplace";
 
 interface ProductGridProps {
   items: MarketplaceItem[];

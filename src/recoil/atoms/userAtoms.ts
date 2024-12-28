@@ -1,13 +1,13 @@
-"use client";
 import { atom } from "recoil";
 
-// Update the atom to store a string for the user wallet address
-export const userAddressAtom = atom<string | null>({
-  key: "userAddress",  // Unique key for this atom
-  default: null,       // Default value
+// Wallet address state
+export const walletAddressState = atom<string>({
+  key: "walletAddressState",
+  default: "", // Default value (initial value)
 });
 
+// Balance state
 export const balanceAtom = atom<number | null>({
-  key: "balance",  // Unique key for this atom
-  default: 0,       // Default value
+  key: "balance",
+  default: 1000,
 });

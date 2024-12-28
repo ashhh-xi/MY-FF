@@ -48,7 +48,7 @@ import { Nav } from "react-day-picker";
 const inter = Inter({ subsets: ["latin"] });
 
 const metadata: Metadata = {
-  title: "thirdweb SDK + Next starter",
+  title: "FeedForward ",
   description:
     "Starter template for using thirdweb SDK with Next.js App router",
 };
