@@ -17,7 +17,7 @@ export default function ConnectBtn() {
   const [isLoading, setIsLoading] = useState(false);
   const [isConnectedSectionVisible, setIsConnectedSectionVisible] = useState(true); // Manage visibility of the wallet section
   const [walletAddress, setWalletAddress] = useRecoilState(walletAddressState); // Recoil state to manage wallet address
-f
+
   useEffect(() => {
     // Initialize Web3 instance if MetaMask is available
     if (window.ethereum) {
